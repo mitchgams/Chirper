@@ -5,12 +5,11 @@ import React from 'react';
 class MakePost extends Component {
 
     handlePost() {
-        let postName = document.getElementById("post-name").value;
-        if(postName === "") postName = "Anonymous";
+        let postName = null;
+        document.getElementById("post-name").value === "" ? postName = "Anonymous" : postName = document.getElementById("post-name").value;
         let postContent = document.getElementById("chirp-content").value;
         let date = new Date();
         let dateFormat = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
-        
         if(postContent === "") {
             alert("Please let us know what's on your mind to continue.");
         } else {
