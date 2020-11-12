@@ -9,6 +9,7 @@ class MakePost extends Component {
         document.getElementById("post-name").value === "" ? postName = "Anonymous" : postName = document.getElementById("post-name").value;
         let postContent = document.getElementById("chirp-content").value;
         let date = new Date();
+        // my machine says the getMonth() is off by 1 month... I have no idea why
         let dateFormat = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
         if(postContent === "") {
             alert("Please let us know what's on your mind to continue.");

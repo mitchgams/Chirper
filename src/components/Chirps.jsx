@@ -1,6 +1,5 @@
-import UserInfo from './UserInfo';
+import PostContent from './PostContent';
 import Posts from './Posts';
-import PostDate from './PostDate';
 const { Component } = require("react");
 
 class Chirps extends Component {
@@ -13,26 +12,14 @@ class Chirps extends Component {
     }
 
     listPosts(posts) {
-        let list = posts.map((chirp) => {
-            return (
-                <article className="card mb-3" key={chirp.user.id}>
-                    <div className="card-header p-0">
-                        <UserInfo user={chirp.user} />
-                    </div>
-                    <div className="card-body p-2">
-                        <p className="card-text" id="chirper-text">{chirp.post.content}</p>
-                        <PostDate date={chirp.post.date} />
-                    </div>
-              </article>
-            );
-        });
+        let list = posts.map((chirp) => <PostContent chirp={chirp} />);
         return list;
     }
 
     render() {
         setInterval(() => {
             if(this.state.postCount < Posts.length) {
-                this.setState({postCount: PostDate.length});
+                this.setState({postCount: Posts.length});
             }
         }, 500);
         return this.listPosts(Posts);
